@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {CarDetails} from './cars/car';
+import {CarDetails, SHIFT_TYPES} from './cars/car';
 
 import "./App.css";
 import { CarComponent } from "./cars/car.component";
@@ -12,7 +12,7 @@ function App() {
     model: '',
     price: 0,
     fuelType: '',
-    shiftType: 'Automatic',
+    shiftType: SHIFT_TYPES.automatic,
     features: [],
     colour: '',
   });

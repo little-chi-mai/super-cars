@@ -5,7 +5,7 @@ export function findCars(term: string) {
     resolve(
       carData
         .filter(
-          (car) => `${car.make} ${car.model}`.toLowerCase().indexOf(term) >= 0
+          (car) => `${car.make} ${car.model}`.toLowerCase().indexOf(term.toLowerCase()) >= 0
         )
         .map((car) => ({
           make: car.make,
