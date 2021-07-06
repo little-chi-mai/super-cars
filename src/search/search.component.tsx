@@ -72,7 +72,7 @@ export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, ca
                 placeholder="Search..."
                 onChange={onChange}
                 value={searchTerm}
-                // onBlur={closeSearchResult}
+                onBlur={closeSearchResult}
                 onFocus={() => setIsResultShown(true)}
             />
             {isResultShown && searchResult.length > 0 && <div className="search-result">
