@@ -15,14 +15,18 @@ describe("Search", () => {
   test('input field renderes correctly', () => {
     const inputEl = getByTestId("search-input");
 
-    expect(inputEl.textContent).toBe('');
+    expect(inputEl.value).toBe('');
+    console.log(inputEl);
+    
 
     fireEvent.change(inputEl, {
       target: {
         value: 'm'
       }
     })
-    expect(inputEl.textContent).toBe('m');
+    console.log(inputEl);
+    
+    expect(inputEl.value).toBe('m');
   })
   
 })

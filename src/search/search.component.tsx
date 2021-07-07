@@ -6,18 +6,21 @@ import currencyFormatter from '../helpers/currencyFormatter';
 
 interface IProps {
     searchTerm: string,
-    setSearchTerm: React.Dispatch<React.SetStateAction<string>>,
+    setSearchTerm: (a: string) => void,
     setCarDetails: React.Dispatch<React.SetStateAction<Props["carDetails"]>>,
+
 }
 
 export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, setCarDetails}) => {
     let [searchResult, setSearchResult] = useState<Car[]>([]);
+    let [input, setInput] = useState<string>('');
     let [isResultShown, setIsResultShown] = useState<boolean>(false);
 
     const onInputChange = function(e: React.ChangeEvent<HTMLInputElement>): void {
         const input = e.target.value;
         // update searchTerm
         setSearchTerm(input);
+        // setInput(input)
         // search in database with input
         console.log( typeof setSearchTerm )
         findCars(input).then((response: Car[]) => {
