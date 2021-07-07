@@ -19,6 +19,7 @@ export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, se
         // update searchTerm
         setSearchTerm(input);
         // search in database with input
+        console.log( typeof setSearchTerm )
         findCars(input).then((response: Car[]) => {
             // set searchResult with the response
             setSearchResult(response);
