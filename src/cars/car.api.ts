@@ -5,6 +5,7 @@ export function findCars(term: string) {
     resolve(
       carData
         .filter(
+          // added extra .toLowerCase() allows users to search with capital letters
           (car) => `${car.make} ${car.model}`.toLowerCase().indexOf(term.toLowerCase()) >= 0
         )
         .map((car) => ({

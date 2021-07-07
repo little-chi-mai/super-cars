@@ -11,36 +11,39 @@ interface IProps {
 }
 
 export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, setCarDetails}) => {
-
     let [searchResult, setSearchResult] = useState<Car[]>([]);
     let [isResultShown, setIsResultShown] = useState<boolean>(false);
 
-    const onChange = function(e: React.ChangeEvent<HTMLInputElement>): void {
+    const onInputChange = function(e: React.ChangeEvent<HTMLInputElement>): void {
         const input = e.target.value;
+        // update searchTerm
         setSearchTerm(input);
+        // search in database with input
         findCars(input).then((response: Car[]) => {
+            // set searchResult with the response
             setSearchResult(response);
+            // show the result on the screen
             setIsResultShown(true);
         })
     }
 
-    const onClick = function(car: Car): void {
+    const onResultClick = function(car: Car): void {
         let carDetails = getCarDetails(car.make, car.model) as CarDetails;
-        
+        // update carDetails
         setCarDetails(carDetails);
+        // reset searchTerm into empty string
         setSearchTerm('');
+        // reset searchResult into empty array
         setSearchResult([]);
     }
 
     const showSearchResult = function(): JSX.Element[] {
-      
         return searchResult.map((car: Car) => {
             return (
                 <div 
                     className="search-result-car" 
                     key={car.model} 
-                    onClick={() => onClick(car)}
-                    
+                    onClick={() => onResultClick(car)}  
                 >
                     <p className="search-result-info">{car.make} {car.model}</p>
                     <p className="search-result-info">{currencyFormatter(car.price)}</p>
@@ -50,6 +53,7 @@ export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, se
     }
 
     const closeSearchResult = function(): void {
+        // delay closing searchResult to trigger onResultClick() if users click on a result
         setTimeout(() => {
             setIsResultShown(false);
         }, 200) 
@@ -65,7 +69,7 @@ export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, se
                 className="search-input" 
                 type="search" 
                 placeholder="Search..."
-                onChange={onChange}
+                onChange={onInputChange}
                 value={searchTerm}
                 onBlur={closeSearchResult}
                 onFocus={openSearchResult}

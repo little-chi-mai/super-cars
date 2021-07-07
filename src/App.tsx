@@ -6,6 +6,7 @@ import { CarComponent } from "./cars/car.component";
 import { SearchComponent } from "./search/search.component";
 
 function App() {
+  // set initial state of searchTerm and carDetails as empty
   let [searchTerm, setSearchTerm] = useState<string>('');
   let [carDetails, setCarDetails] = useState<CarDetails>({
     make: '',
