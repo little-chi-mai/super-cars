@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/super-cars/static/css/main.731d2c8b.chunk.css",
+    "main.js": "/super-cars/static/js/main.8bc64134.chunk.js",
+    "main.js.map": "/super-cars/static/js/main.8bc64134.chunk.js.map",
+    "runtime-main.js": "/super-cars/static/js/runtime-main.5d0a3fc3.js",
+    "runtime-main.js.map": "/super-cars/static/js/runtime-main.5d0a3fc3.js.map",
+    "static/js/2.7cb8b06a.chunk.js": "/super-cars/static/js/2.7cb8b06a.chunk.js",
+    "static/js/2.7cb8b06a.chunk.js.map": "/super-cars/static/js/2.7cb8b06a.chunk.js.map",
+    "static/js/3.b2445590.chunk.js": "/super-cars/static/js/3.b2445590.chunk.js",
+    "static/js/3.b2445590.chunk.js.map": "/super-cars/static/js/3.b2445590.chunk.js.map",
+    "index.html": "/super-cars/index.html",
+    "static/css/main.731d2c8b.chunk.css.map": "/super-cars/static/css/main.731d2c8b.chunk.css.map",
+    "static/js/2.7cb8b06a.chunk.js.LICENSE.txt": "/super-cars/static/js/2.7cb8b06a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5d0a3fc3.js",
+    "static/js/2.7cb8b06a.chunk.js",
+    "static/css/main.731d2c8b.chunk.css",
+    "static/js/main.8bc64134.chunk.js"
+  ]
+}
