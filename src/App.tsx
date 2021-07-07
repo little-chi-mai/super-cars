@@ -6,8 +6,8 @@ import { CarComponent } from "./cars/car.component";
 import { SearchComponent } from "./search/search.component";
 
 function App() {
-  let [searchTerm, setSearchTerm] = useState('');
-  let [car, setCar] = useState<CarDetails>({
+  let [searchTerm, setSearchTerm] = useState<string>('');
+  let [carDetails, setCarDetails] = useState<CarDetails>({
     make: '',
     model: '',
     price: 0,
@@ -21,11 +21,10 @@ function App() {
       <SearchComponent 
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        car={car}
-        setCar={setCar}
+        setCarDetails={setCarDetails}
       />
       <CarComponent 
-        car={car}
+        carDetails={carDetails}
       />
     </div>
   );

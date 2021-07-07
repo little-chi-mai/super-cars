@@ -1,68 +1,62 @@
 import React, { useState } from 'react';
 import {findCars, getCarDetails} from '../cars/car.api';
+import {Car, CarDetails} from '../cars/car';
 import {IProps as Props} from '../cars/car.component';
 import currencyFormatter from '../helpers/currencyFormatter';
 
 interface IProps {
     searchTerm: string
     setSearchTerm: React.Dispatch<React.SetStateAction<string>>
-    car: Props["car"]
-    setCar: React.Dispatch<React.SetStateAction<Props["car"]>>
+    setCarDetails: React.Dispatch<React.SetStateAction<Props["carDetails"]>>,
 }
 
-export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, car, setCar}) => {
+export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, setCarDetails}) => {
 
-    let [searchResult, setSearchResult] = useState([]);
-    let [isResultShown, setIsResultShown] = useState(false);
+    let [searchResult, setSearchResult] = useState<Car[]>([]);
+    let [isResultShown, setIsResultShown] = useState<boolean>(false);
 
     const onChange = function(e: React.ChangeEvent<HTMLInputElement>): void {
-        setSearchTerm(e.target.value)
-        findCars(e.target.value).then((response: any) => {
-            if (!e.target.value) {
-                setSearchResult([]);
-                setIsResultShown(false);
-            } else {
-                setSearchResult(response);
-                setIsResultShown(true);
-            }
-            // console.log(response);
+        const input = e.target.value;
+        setSearchTerm(input)
+        findCars(input).then((response: Car[]) => {
+            setSearchResult(response);
+            setIsResultShown(true);
         })
     }
 
-    const onClick = function(car: any): void {
-        console.log("CAR", car);
+    const onClick = function(car: Car): void {
+        let carDetails = getCarDetails(car.make, car.model) as CarDetails;
         
-        let carDetails: any = getCarDetails(car.make, car.model);
-        console.log('carDetails', carDetails);
-        
-        setCar(carDetails);
+        setCarDetails(carDetails);
         setSearchTerm('');
         setSearchResult([]);
     }
 
-    const showSearchResult = (): JSX.Element[] => {
+    const showSearchResult = function(): JSX.Element[] {
       
-        return searchResult.map((car: any) => {
+        return searchResult.map((car: Car) => {
             return (
                 <div 
                     className="search-result-car" 
                     key={car.model} 
                     onClick={() => onClick(car)}
                 >
-                    <h3>{car.make} {car.model}</h3>
-                    <h3>{currencyFormatter(car.price)}</h3>
+                    <p className="search-result-info">{car.make} {car.model}</p>
+                    <p className="search-result-info">{currencyFormatter(car.price)}</p>
                 </div>
             )
         })
     }
 
-    const closeSearchResult = (): void => {
+    const closeSearchResult = function(): void {
         setTimeout(() => {
-            setIsResultShown(false)
-        }, 100)
-        
+            setIsResultShown(false);
+        }, 200) 
     }
 
+    const openSearchResult = function(): void {
+        setIsResultShown(true);
+    }
 
     return (
         <div className="search">
@@ -73,7 +67,7 @@ export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, ca
                 onChange={onChange}
                 value={searchTerm}
                 onBlur={closeSearchResult}
-                onFocus={() => setIsResultShown(true)}
+                onFocus={openSearchResult}
             />
             {isResultShown && searchResult.length > 0 && <div className="search-result">
                 {showSearchResult()}

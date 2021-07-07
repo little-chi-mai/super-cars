@@ -45,11 +45,11 @@ input::placeholder {
 .search-result {
   position: absolute;
   top: 96px;
-  background-color: rgba(41, 41, 41, 0.863);
+  background-color: rgba(41, 41, 41, 0.925);
   border: 1px solid white;
   border-radius: 0 0 20px 20px;
   width: 100%;
-  max-width: 14.7rem;
+  max-width: 14.9rem;
   min-height: 0;
   min-width: 0;
 }
@@ -59,6 +59,12 @@ input::placeholder {
 }
 
 .search-result-car > h3 {
+}
+
+.search-result-info {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
   margin: 0;
 }
 
@@ -67,6 +73,10 @@ input::placeholder {
   flex-direction: column;
   align-items: center;
 }
+.car-name {
+  margin-top: 2rem;
+}
+
 .car-name {
   margin-top: 2rem;
 }
