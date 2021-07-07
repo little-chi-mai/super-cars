@@ -5,8 +5,8 @@ import {IProps as Props} from '../cars/car.component';
 import currencyFormatter from '../helpers/currencyFormatter';
 
 interface IProps {
-    searchTerm: string
-    setSearchTerm: React.Dispatch<React.SetStateAction<string>>
+    searchTerm: string,
+    setSearchTerm: React.Dispatch<React.SetStateAction<string>>,
     setCarDetails: React.Dispatch<React.SetStateAction<Props["carDetails"]>>,
 }
 
@@ -17,7 +17,7 @@ export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, se
 
     const onChange = function(e: React.ChangeEvent<HTMLInputElement>): void {
         const input = e.target.value;
-        setSearchTerm(input)
+        setSearchTerm(input);
         findCars(input).then((response: Car[]) => {
             setSearchResult(response);
             setIsResultShown(true);
@@ -40,6 +40,7 @@ export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, se
                     className="search-result-car" 
                     key={car.model} 
                     onClick={() => onClick(car)}
+                    
                 >
                     <p className="search-result-info">{car.make} {car.model}</p>
                     <p className="search-result-info">{currencyFormatter(car.price)}</p>
@@ -68,10 +69,14 @@ export const SearchComponent: React.FC<IProps> = ({searchTerm, setSearchTerm, se
                 value={searchTerm}
                 onBlur={closeSearchResult}
                 onFocus={openSearchResult}
+                data-testid="search-input"
             />
-            {isResultShown && searchResult.length > 0 && <div className="search-result">
-                {showSearchResult()}
-            </div>
+            {
+                isResultShown && 
+                searchResult.length > 0 && 
+                <div className="search-result">
+                    {showSearchResult()}
+                </div>
             }         
         </div>
     ) 

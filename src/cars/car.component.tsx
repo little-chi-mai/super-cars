@@ -27,7 +27,9 @@ export const CarComponent: React.FC<IProps> = ({carDetails}) => {
                     </div>
                 </div>
                 <div className="car-info-2">
-                    <p className="search-result-info">{currencyFormatter(carDetails.price)}</p>
+                    <p className="search-result-info">
+                        {currencyFormatter(carDetails.price)}
+                    </p>
                     <p className="car-features">{carDetails.features.join(' - ')}</p>
                 </div>
             </div>
