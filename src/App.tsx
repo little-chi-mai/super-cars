@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import {CarDetails, SHIFT_TYPES} from './cars/car';
 
-import "./App.css";
+import {CarDetails, SHIFT_TYPES} from './cars/car';
 import { CarComponent } from "./cars/car.component";
 import { SearchComponent } from "./search/search.component";
+
+import "./App.css";
 
 function App() {
   // set initial state of searchTerm and carDetails as empty

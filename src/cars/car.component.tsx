@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {CarDetails} from './car';
 import currencyFormatter from '../helpers/currencyFormatter';
 
