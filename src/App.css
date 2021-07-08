@@ -20,7 +20,6 @@ h2 {
 }
 
 input::placeholder {
-  /* padding-left: 0.5rem; */
   color: #434446;
 }
 
@@ -37,8 +36,6 @@ input::placeholder {
   text-indent: 15px;
   height: 2.2rem;
   width: 15.5rem;
-  /* max-width: 15rem; */
-  /* min-width: 8rem; */
   position: relative;
 }
 
@@ -93,7 +90,6 @@ input::placeholder {
 .car-info-1 > * {
   color: black;
   margin: 0.1rem 1.5rem 0.1rem 0.1rem;
-  /* margin-right: 1.5rem; */
 }
 
 .divider {
